@@ -1,4 +1,4 @@
-Timing: Project should be finish at the ned of the course
+Timing: Project should be finish at the end of the course
 
 Aim: Everyone creates a simple full-stack application preferably using MERN stack. Database and backend can be changed but frontend 
 should be React. Application will have a frontend, backend and a database. It will also have some kind of user management and session management.
