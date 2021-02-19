@@ -1,6 +1,6 @@
 Timing: Project should be finish at the end of the course
 
-Aim: Everyone creates a simple full-stack application preferably using MERN stack. Database and backend can be changed but frontend 
+Aim: Everyone creates a simple full-stack application preferably using MERN stack. Database and backend can be changed but frontend
 should be React. Application will have a frontend, backend and a database. It will also have some kind of user management and session management.
 
 required parts:
@@ -15,11 +15,8 @@ required parts:
         - Explanation of technologies used
         - Future (plans for futher developement)
 
-Idea:   PoE leaderboad V2
-    - frontend has leaderboards, maybe charts, from PoE temp leagues
-    - backend serves the frontend json data that are used to make the leaderboards and charts, data is refreshed every 5 minutes or so (Public API constraints and there is no need 
-        to constantly update the info).
-    - Data gathered from PoE public API, from the end of every day the server stores data in MongoDB that is used to make leaderboards from previous days 
-        or charts that span multiple days.
-    - User management? Ability link to your PoE account or to make an account on the site where you can specify your characters / account name on PoE, 
-        to see yourself on the leaderboard / charts.
+Idea:   wikia site
+    - frontend display wiki articles, allows listing them alphabetically and has a search bar function
+    - backend gives articles to frontend and handles the database queries to edit, remove and add new ones to the database
+    - Articles, users and menus are stored in a mongodb.
+    - Only registered users that have logged in can edit and create new articles, only admin can delete articles
