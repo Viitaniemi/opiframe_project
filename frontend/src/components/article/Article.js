@@ -24,6 +24,7 @@ export default class Article extends React.Component{
         return tempArticleJSON;
     }
 
+    //gets the desired article name from page URL
     parseURL = () => {
         let URL = window.location.pathname;
         let pos = URL.lastIndexOf("/") + 1;
