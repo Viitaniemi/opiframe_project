@@ -5,15 +5,8 @@ import {activate} from '../../actions/loginActions';
 
 
 class ActivationPage extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            activationParams: this.parseURL()
-        }
-    }
-
     componentDidMount() {
-        this.props.dispatch(activate(this.state.activationParams));
+        this.props.dispatch(activate(this.parseURL()));
     }
 
     parseURL = () => {

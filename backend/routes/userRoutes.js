@@ -124,11 +124,11 @@ router.post("/login",function(req,res){
         //check for error
         if(err){
             console.log("Login failed. Reason:",err);
-            return res.reason(500).json({message:"Internal server error"});
+            return res.status(500).json({message:"Internal server error"});
         }
         //check if username exists
         if(!user){
-            return res.reason(403).json({message:"Forbidden"});
+            return res.status(403).json({message:"Forbidden"});
         }
         //compare given password to DB
         bcrypt.compare(req.body.password,user.password,function(err,success){
@@ -192,7 +192,7 @@ router.post("/activate",function(req,res){
     }
     //look for the user in DB
     let query = {}
-    userModel.replaceOne({"username":req.body.username, "activationCode":req.body.activationCode},{activated:1},function(err,user){
+    userModel.updateOne({"username":req.body.username, "activationCode":req.body.activationCode},{activated:1},function(err,user){
         //check for error
         if(err){
             console.log("Failed to activate user. Reason:",err);

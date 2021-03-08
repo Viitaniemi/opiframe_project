@@ -32,7 +32,9 @@ export const register = (user) => {
                 }
             }
         }).then(error => {
-            dispatch(registerFailed("Server responded with an error:"+error));
+            if(error){
+                dispatch(registerFailed("Server responded with an error:"+error));
+            }
         })
     }
 }
@@ -76,18 +78,21 @@ export const logout = (token) => {
         fetch("/user/logout",request).then(response => {
             dispatch(logoutSuccess());
         }).catch(error => {
-            dispatch(loginFailed("Server responded with an error. We logged you out anyway. Error"+error));
+            if(error){
+                dispatch(loginFailed("Server responded with an error. We logged you out anyway. Error"+error));
+            }
         })
     }
 }
 
-export const activate = (activationCode) => {
+export const activate = (activationParams) => {
+    console.log("activatecode:",activationParams)
     return(dispatch) => {
         let request = {
             method:'POST',
             mode:'cors',
-            headers:{'Content-type':'application/json', 
-            activationCode:activationCode},
+            headers:{'Content-type':'application/json'},
+            body:JSON.stringify(activationParams)
         }
         fetch("/user/activate",request).then(response => {
             if(response.ok){
@@ -96,7 +101,9 @@ export const activate = (activationCode) => {
                 dispatch(activationFailed("Server responded with a status:"+response.status));
             }
         }).then(error => {
-            dispatch(activationFailed("Server responded with an error:"+error));
+            if(error){
+                dispatch(activationFailed("Server responded with an error:"+error));
+            }
         })
     }
 }

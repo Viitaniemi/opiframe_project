@@ -7,9 +7,16 @@ import {login} from '../../actions/loginActions';
 class LoginPage extends React.Component{
     constructor(props){
         super(props);
+
+        //get the url of login page and prepare it for the register page link
+        let path = window.location.href;
+        let pos = path.lastIndexOf("/");
+        path = path.slice(0,pos);
+
         this.state = {
             username:"",
-            password:""
+            password:"",
+            register:path+"/register"
         }
     }
 
@@ -29,11 +36,9 @@ class LoginPage extends React.Component{
             password:this.state.password
         }
         this.props.dispatch(login(user));
-        
-    }
-
-    registerAccount = () => {
-        this.props.history.push('/register');
+        this.setState({
+            password:""
+        });
     }
 
     render() {
@@ -50,7 +55,7 @@ class LoginPage extends React.Component{
                     </Form.Field>
                     <Button onClick={this.onClick} name="login">Login</Button>
                 </Form>
-                <p>Don't have an account yet? Register now <a onClick={this.registerAccount}>here</a>!</p>
+                <p>Don't have an account yet? Register now <a href={this.state.register}>here</a>!</p>
             </div>
         )
     }

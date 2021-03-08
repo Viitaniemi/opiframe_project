@@ -10,7 +10,7 @@ const sessionModel = require("./models/session");
 let app = express();
 
 //use local DB
-mongoose.connect("mongodb://localhost/webshopping").then(
+mongoose.connect("mongodb://localhost/mernwiki").then(
     () => console.log("Connected to MongoDB"),
     (error) => console.log("Failed to connect to MongoDB. Reason:",error)
 );

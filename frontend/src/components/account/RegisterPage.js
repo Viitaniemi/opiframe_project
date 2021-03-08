@@ -40,10 +40,17 @@ class RegisterPage extends React.Component{
         }
         let user = {
             username:this.state.username,
-            password:this.state.password,
+            password:this.state.password1,
             email:this.state.email
         }
+        console.log("dispatch-register")
         this.props.dispatch(register(user));
+        this.setState({
+            username:"",
+            email:"",
+            password1:"",
+            password2:"",
+        });
     }
 
     render() {

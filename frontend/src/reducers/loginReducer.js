@@ -41,6 +41,10 @@ const saveToStorage = (state) =>{
 const initialState = getInitialState();
 
 const loginReducer = (state=initialState,action) => {
+    /*
+    let rand = Math.floor(Math.random()*1000);
+    console.log(rand);
+    */
     console.log("LoginReducer, action:",action);
     let tempState={};
     switch(action.type){
@@ -121,7 +125,7 @@ const loginReducer = (state=initialState,action) => {
             tempState = {
                 ...state,
                 loading:false,
-                error:"Your Account has been activated succesfully"
+                error:"Your account has been activated succesfully"
             }
             saveToStorage(tempState);
             return tempState;
