@@ -1,6 +1,5 @@
 import React from 'react';
 import {Form,Button} from 'semantic-ui-react';
-import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {login} from '../../actions/loginActions';
 
@@ -61,4 +60,4 @@ class LoginPage extends React.Component{
     }
 }
 
-export default withRouter(connect()(LoginPage));
+export default connect()(LoginPage);

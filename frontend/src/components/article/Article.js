@@ -10,17 +10,16 @@ export default class Article extends React.Component{
 
     fetchArticle = (articleName) => {
         //temp article
-        let tempArticleJSON = [
-            {"articleTitle": articleName},
-            {"contents": [
-                {"title": "title1"},
-                {"content": "content1"},
-                {"title": "title2"},
-                {"content": "content2"}
-            ]},
-            {"editedBy": "asd qwerty"},
-            {"lastEdited": new Date().toString()}
-        ]
+        let tempArticleJSON = {
+            "articleTitle":articleName,
+            "introduction":"introduction",
+            "contents":[
+                {"title1":"content1"},
+                {"title2":"content2"}
+            ],
+            "editedBy":"asd qwerty",
+            "lastEdited":new Date().toString()
+        }
         return tempArticleJSON;
     }
 
@@ -32,38 +31,37 @@ export default class Article extends React.Component{
     }
 
     render(){
-        console.log(this.state.article);
-        let article = this.state.article.map((item, index = 0) => {
-            index++;
-            let key = Object.keys(item);
-            //Main article title
-            if (key[0] === "articleTitle")
-                return (<h1 className="articleTitle" key={index}>{item.articleTitle}</h1>)
-
-            //process article body
-            if (key[0] === "contents"){
-                //map through article body components
-                return item.contents.map((subItem, subindex = 100) => {
-                    subindex++;
-                    let subkeys = Object.keys(subItem);
-                    if (subkeys[0] === "title")
-                        return (<h2 className="articleSubTitle" key={subindex}>{subItem.title}</h2>)
-                    if (subkeys[0] === "content")
-                        return (<p className="articleContent" key={subindex}>{subItem.content}</p>)
-                })
-            }
-
-            //create information for editedBy
-            if (key[0] === "editedBy")
-                return (<p className="edited" key={index}>last edited by: {item.editedBy}, </p>)
-            if (key[0] === "lastEdited")
-                return (<p className="edited" key={index}>{item.lastEdited}</p>)
-            console.log(article);
-        })
-
         return(
             <div className="article">
-                {article}
+                <h1 className="articleTitle">{this.state.article.articleTitle}</h1><br/>
+                <p className="articleIntroduction">{this.state.article.introduction}</p><br/>
+                <div className="tableOfContents">
+                    <ol>
+                    {
+                        this.state.article.contents.map((item,key) => {
+                            let title = Object.keys(item);
+                            return(
+                                <li key={key}>{title}</li>
+                            )
+                        })
+                        
+                    }
+                    </ol>
+                </div>
+                {
+                    
+                    this.state.article.contents.map((item,key) => {
+                        let title = Object.keys(item);
+                        return (
+                            <div className="sectionContainer" key={key}>
+                                <h2 className="sectionTitle">{title}</h2><br/>
+                                <p className="sectionContent">{item[title]}</p><br/>
+                            </div>
+                        );
+                    })
+                }
+                <p className="editedBy">{this.state.article.editedBy}</p><br/>
+                <p className="editedBy">{this.state.article.lastEdited}</p>
             </div>
         )
     }

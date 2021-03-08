@@ -1,6 +1,5 @@
 import React from 'react';
 import {Form,Button} from 'semantic-ui-react';
-import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {register} from '../../actions/loginActions';
 
@@ -80,4 +79,4 @@ class RegisterPage extends React.Component{
     }
 }
 
-export default withRouter(connect()(RegisterPage));
+export default connect()(RegisterPage);
